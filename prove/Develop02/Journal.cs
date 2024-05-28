@@ -76,7 +76,7 @@ public class Journal
                 // If it's a JSON file, deserialize the content to a list of Entry objects
                 Entries = JsonConvert.DeserializeObject<List<Entry>>(string.Join("", lines));
             }
-            else if (extension == ".txt")
+            else
             {
                 // If it's a text file, parse each line into a new Entry and add it to the list
                 foreach (string line in lines)
@@ -93,11 +93,7 @@ public class Journal
                     }
                 }
             }
-            else
-            {
-                // If it's neither, print an error message
-                Console.WriteLine($"Unsupported file type: {extension}");
-            }
+
         }
         catch (FileNotFoundException)
         {
