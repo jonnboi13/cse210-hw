@@ -39,25 +39,23 @@ public class Journal
             {
                 // If it's a JSON file, serialize the Entries list to JSON
                 string json = JsonConvert.SerializeObject(Entries);
-
-                // Write the JSON string to the file
                 File.WriteAllText(filename, json);
-            }
-            else if (extension == ".txt")
-            {
-                // If it's a text file, write each entry's content to the file
-                File.WriteAllLines(filename, Entries.Select(entry => entry.Content));
             }
             else
             {
-                // If it's neither, print an error message
-                Console.WriteLine($"Unsupported file type: {extension}");
+                // For other file types, save as comma-separated values
+                using (StreamWriter sw = new StreamWriter(filename))
+                {
+                    foreach (var entry in Entries)
+                    {
+                        sw.WriteLine($"{entry.Prompt},{entry.Content},{entry.Date.ToString("MM/dd/yyyy h:mm:ss tt")}");
+                    }
+                }
             }
         }
         catch (Exception ex)
         {
-            // If there's an error, print an error message
-            Console.WriteLine($"Error writing data to file: {filename}. Error: {ex.Message}");
+            Console.WriteLine($"An error occurred: {ex.Message}");
         }
     }
 
@@ -65,6 +63,9 @@ public class Journal
     {
         try
         {
+            // Clear the current entries
+            Entries.Clear();
+
             // Read the file content
             string[] lines = File.ReadAllLines(filename);
 
@@ -107,6 +108,11 @@ public class Journal
         {
             // If there's an error in the JSON data, print an error message
             Console.WriteLine($"Error reading data from file: {filename}");
+        }
+        catch (ArgumentException)
+        {
+            // If the filename is empty, print an error message
+            Console.WriteLine("Filename cannot be empty.");
         }
     }
 }
