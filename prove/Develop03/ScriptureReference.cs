@@ -2,27 +2,27 @@
 
 public class Reference
 {
-    private string bookName;
-    private int chapter;
-    private List<int> verses;
+    private string _bookName;
+    private int _chapter;
+    private List<int> _verses;
 
     public Reference(string bookName, int chapter, List<int> verses)
     {
-        this.bookName = bookName;
-        this.chapter = chapter;
-        this.verses = verses;
+        this._bookName = bookName;
+        this._chapter = chapter;
+        this._verses = verses;
     }
 
     public string GetReferenceText()
     {
         string versesText = string.Empty;
 
-        if (verses.Count > 1)
+        if (_verses.Count > 1)
         {
-            int startVerse = verses[0];
-            int endVerse = verses[verses.Count - 1];
+            int startVerse = _verses[0];
+            int endVerse = _verses[_verses.Count - 1];
 
-            if (endVerse - startVerse == verses.Count - 1)
+            if (endVerse - startVerse == _verses.Count - 1)
             {
                 // Verses are consecutive
                 versesText = $"{startVerse}-{endVerse}";
@@ -30,29 +30,29 @@ public class Reference
             else
             {
                 // Verses are not consecutive
-                versesText = string.Join(", ", verses);
+                versesText = string.Join(", ", _verses);
             }
         }
-        else if (verses.Count == 1)
+        else if (_verses.Count == 1)
         {
-            versesText = verses[0].ToString();
+            versesText = _verses[0].ToString();
         }
 
-        return $"{bookName} {chapter}:{versesText}";
+        return $"{_bookName} {_chapter}:{versesText}";
     }
 
     public string GetBookName()
     {
-        return bookName;
+        return _bookName;
     }
 
     public int GetChapterNumber()
     {
-        return chapter;
+        return _chapter;
     }
 
     public List<int> GetVerseNumbers()
     {
-        return verses;
+        return _verses;
     }
 }
