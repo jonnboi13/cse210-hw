@@ -39,7 +39,14 @@ public class ChecklistGoal : Goal
 
     public override string GetStatus()
     {
-        return $"Completed {_progress}/{_target} times:";
+        if (_progress >= _target)
+        {
+            return "[X]";
+        }
+        else
+        {
+            return $"Completed {_progress}/{_target} times:";
+        }
     }
 
     public override string Serialize()
