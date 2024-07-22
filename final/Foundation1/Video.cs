@@ -16,20 +16,20 @@ public class Video
         _comments = new List<Comment>();
     }
 
-    public string Title
-    {
-        get { return _title; }
-    }
+    // public string Title
+    // {
+    //     get { return _title; }
+    // }
 
-    public string Author
-    {
-        get { return _author; }
-    }
+    // public string Author
+    // {
+    //     get { return _author; }
+    // }
 
-    public int Length
-    {
-        get { return _length; }
-    }
+    // public int Length
+    // {
+    //     get { return _length; }
+    // }
 
     public void AddComment(Comment comment)
     {

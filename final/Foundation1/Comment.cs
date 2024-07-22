@@ -11,16 +11,6 @@ public class Comment
         _text = text;
     }
 
-    public string Commenter
-    {
-        get { return _commenter; }
-    }
-
-    public string Text
-    {
-        get { return _text; }
-    }
-
     // Method to display the comment details
     public void DisplayComment()
     {
