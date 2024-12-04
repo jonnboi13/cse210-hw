@@ -1,5 +1,3 @@
-// Reference.cs
-
 public class Reference
 {
     private string _bookName;

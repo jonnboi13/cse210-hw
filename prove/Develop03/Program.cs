@@ -1,5 +1,3 @@
-// Program.cs
-
 using System;
 using System.Collections.Generic;
 
@@ -7,13 +5,13 @@ class Program
 {
     static void Main(string[] args)
     {
-        string _book = "John";
-        int _chapter = 3;
-        List<int> _verses = new List<int> { 16, 18, 21 };
-        string _text = "For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life.";
+        string book = "John";
+        int chapter = 3;
+        List<int> verses = new List<int> { 16, 18, 21 };
+        string text = "For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life.";
 
-        Reference reference = new Reference(_book, _chapter, _verses);
-        Scripture scripture = new Scripture(reference, _text);
+        Reference reference = new Reference(book, chapter, verses);
+        Scripture scripture = new Scripture(reference, text);
 
         while (true)
         {
